@@ -1,0 +1,15 @@
+<div class="header-main-cnt">
+    <div class="signup-login">
+        <span  [matMenuTriggerFor]="menu">signup</span>
+        <span>login</span>
+    </div>
+    <mat-menu #menu="matMenu" class="register-persons-menu">
+        <span  routerLink="signup">Admin</span><br>
+        <span>Employee</span><br>
+        <span>Agent</span><br>
+        <span>Customer</span>
+    </mat-menu>
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>
