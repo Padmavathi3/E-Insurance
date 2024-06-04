@@ -28,10 +28,19 @@
     flex-direction: row;
     justify-content: center;
   }
-  
-  .name-field {
+  .name-email,.mobileNumber-dateOfBirth,.address-password{
+    display: flex;
+    flex-direction: row;
+    gap:50px;
+  }
+  .name-field,.email-field,.mobileNumber-field,.dateOfBirth-field,.address-field,.password-field {
     display: flex;
     flex-direction: column;
+  }
+  .address{
+    margin-top: 5px;
+    height: 40px;
+    width:200px;
   }
   
   .signup-form-buttons {
