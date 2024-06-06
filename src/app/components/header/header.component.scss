@@ -5,7 +5,8 @@
     padding-top: 14px;
     padding-bottom: 14px; 
     height: 32px;
-    background:rgb(16, 16, 158) 0% 0% no-repeat padding-box;
+    // background-color: rgb(252, 148, 131);
+    background:rgb(248, 78, 103) 0% 0% no-repeat padding-box;
   }
   
   .inner-main-cnt {
@@ -20,7 +21,9 @@
     width: 70%;
     margin-left: 50px;
   }
-  
+  .menu-icon{
+    cursor: pointer;
+  }
   .menuicon-img-span-cntr {
     display: flex;
     gap: 35px;

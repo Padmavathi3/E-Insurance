@@ -1,27 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/common-dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
-import { EmployeedashboardComponent } from './components/employeedashboard/employeedashboard.component';
-import { AgentdashboardComponent } from './components/agentdashboard/agentdashboard.component';
-import { CustomerdashboardComponent } from './components/customerdashboard/customerdashboard.component';
+import { PoliciesComponent } from './components/policies/policies.component';
+import { DefaultCustomerPageComponent } from './components/default-customer-page/default-customer-page.component';
+import { PolicyPurchaseFormComponent } from './components/policy-purchase-form/policy-purchase-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  {path:'signup',component:SignupComponent},
-  {path:'',component:LoginComponent},
-  {path:'admin',component:AdmindashboardComponent},
-  {path:'employee',component:EmployeedashboardComponent},
-  {path:'agent',component:AgentdashboardComponent},
-  {path:'customer',component:CustomerdashboardComponent
-    // [{path:'header',component:HeaderComponent}]
-  }
-  // {path:'',component:DashboardComponent,children:[
-  //   {path:'header',component:HeaderComponent}
-  // ]}
+  { path: 'signup', component: SignupComponent },
+  { path: '', component: LoginComponent },
+  {path:'dashboard/:userRole',component:DashboardComponent,children:[
+     { path: '', component: DefaultCustomerPageComponent },
+     {path:'policies',component:PoliciesComponent},
+     {path: 'purchaseForm', component: PolicyPurchaseFormComponent }
+]},
+  // { path: 'adminDashboard/:userRole', component: AdmindashboardComponent },
+  // { path: 'employeeDashboard/:userRole', component: EmployeedashboardComponent },
+  // { path: 'agentDashboard/:userRole', component: AgentdashboardComponent },
+  // {
+  //   path: 'customerDashboard/:userRole', component: CustomerdashboardComponent, children: [
+  //     { path: '', component: DefaultCustomerPageComponent },
+  //     { 
+  //       path: 'policies', component: PoliciesComponent
+  //     },
+  //     { path: 'purchaseForm', component: PolicyPurchaseFormComponent }
+  //   ]
+  // }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -30,14 +30,36 @@ export class LoginComponent implements OnInit {
   showLoginForm(): void {
     this.loginFormVisible = true;
   }
+  handleCustomer()
+  {
+    this.route.navigate([`/dashboard/`,this.userRole])    //go to customer role dashboard
+  }
 
   login(): void {
     console.log(this.loginControl);
     if(this.loginForm.invalid) return
     const {email, password} = this.loginForm.value
-    this.route.navigate([this.userRole])
+    this.route.navigate([`/dashboard/`,this.userRole])    //go to user role dashboard
+
+    // if(this.userRole=='customer')
+    //   {
+    //     this.route.navigate([`/customerDashboard/`,this.userRole])    //go to user role dashboard
+    //   }
+    // else if(this.userRole=='employee')
+    //   {
+    //     this.route.navigate([`/employeeDashboard/`,this.userRole])    //go to employee role dashboard
+    //   }
+    // else if(this.userRole=='agent')
+    //   {
+    //     this.route.navigate([`/agentDashboard/`,this.userRole])    //go to agnet role dashboard
+    //   }
+    //  else if(this.userRole=='admin')
+    //    {
+    //       this.route.navigate([`/adminDashboard/`,this.userRole])    //go to admin role dashboard
+    //    }
+
     console.log('user role',this.userRole);
-    
+    this.dataservice.changeUserRole(this.userRole);
 
   }
   handleRegister()

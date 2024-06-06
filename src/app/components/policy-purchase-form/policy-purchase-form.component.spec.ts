@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgentdashboardComponent } from './agentdashboard.component';
+import { PolicyPurchaseFormComponent } from './policy-purchase-form.component';
 
-describe('AgentdashboardComponent', () => {
-  let component: AgentdashboardComponent;
-  let fixture: ComponentFixture<AgentdashboardComponent>;
+describe('PolicyPurchaseFormComponent', () => {
+  let component: PolicyPurchaseFormComponent;
+  let fixture: ComponentFixture<PolicyPurchaseFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgentdashboardComponent ]
+      declarations: [ PolicyPurchaseFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgentdashboardComponent);
+    fixture = TestBed.createComponent(PolicyPurchaseFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

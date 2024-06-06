@@ -1,0 +1,38 @@
+<mat-drawer-container class="sidenav-main-cnt">
+  <mat-drawer #drawer mode="side" [opened]="drawerState" class="sidenav-options-cnt">
+    <div class="sidenav-content" *ngIf="userRole === 'customer'">
+      <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
+      <span>View Payments</span>
+      <span>Policy Cancellation</span>
+      <span>Policy Renewal</span> <!-- send request to agent to policy renewal -->
+      <span>Receipt</span>
+    </div>
+    <div class="sidenav-content" *ngIf="userRole === 'employee'">
+      <span>Policy Creation</span>
+      <span>Payment Process</span>
+      <span>Commission Calculation</span>
+      <span>Premium Calculation</span>
+      <span>View Payments</span>
+      <span>View Commission</span>
+      <span>Policy Cancellation</span>
+      <span>Policy Renewal</span>
+    </div>
+
+    <div class="sidenav-content" *ngIf="userRole === 'agent'">
+      <span>Policy Creation</span>
+      <span>Payment Process</span>
+      <span>Commission Calculation</span>
+      <span>Premium Calculation(for all policies)</span>
+      <span>Premium Calculation(for single policies)</span>
+      <span>View Commission</span>
+    </div>
+    <div class="sidenav-content" *ngIf="userRole === 'admin'">
+      <span>Register Agent</span>
+      <span>Register Employee</span>
+      <span>Register Customer</span>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
