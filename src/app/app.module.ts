@@ -8,29 +8,35 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './components/common-dashboard/dashboard.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
-import { AdmindashboardComponent } from './components/admindashboard/admindashboard.component';
-import { EmployeedashboardComponent } from './components/employeedashboard/employeedashboard.component';
-import { AgentdashboardComponent } from './components/agentdashboard/agentdashboard.component';
-import { CustomerdashboardComponent } from './components/customerdashboard/customerdashboard.component';
+import { PoliciesComponent } from './components/policies/policies.component';
+import { DefaultCustomerPageComponent } from './components/default-customer-page/default-customer-page.component';
+import { PolicyPurchaseFormComponent } from './components/policy-purchase-form/policy-purchase-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     SignupComponent,
     HeaderComponent,
     LoginComponent,
-    AdmindashboardComponent,
-    EmployeedashboardComponent,
-    AgentdashboardComponent,
-    CustomerdashboardComponent
+    PoliciesComponent,
+    DefaultCustomerPageComponent,
+    PolicyPurchaseFormComponent,
+    DashboardComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,14 @@ import { CustomerdashboardComponent } from './components/customerdashboard/custo
     MatInputModule,
     MatMenuModule,
     MatRadioModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

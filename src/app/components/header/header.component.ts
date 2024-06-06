@@ -6,31 +6,28 @@ import { DataserviceService } from 'src/app/services/dataservice/dataservice.ser
 import { DOWNLOAD_ICON, MENU_ICON, SEARCH_ICON } from 'src/assets/svg-icons';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  drawerState:boolean=false
-  subscription!:Subscription
-  searchString:string=''
+    drawerState: boolean = false;
+    subscription!: Subscription;
 
+    constructor(
+        private dataService: DataserviceService,
+        private domSanitizer: DomSanitizer,
+        private matIconRegistry: MatIconRegistry) {
+        matIconRegistry.addSvgIconLiteral("menu-icon", domSanitizer.bypassSecurityTrustHtml(MENU_ICON)),
+        matIconRegistry.addSvgIconLiteral("search-icon", domSanitizer.bypassSecurityTrustHtml(SEARCH_ICON))
+        matIconRegistry.addSvgIconLiteral("download-icon", domSanitizer.bypassSecurityTrustHtml(DOWNLOAD_ICON))
+    }
 
-  constructor(
-    private dataService:DataserviceService,
-    private domSanitizer:DomSanitizer,
-    private matIconRegistry:MatIconRegistry) 
-    {
-      matIconRegistry.addSvgIconLiteral("menu-icon", domSanitizer.bypassSecurityTrustHtml(MENU_ICON)),
-      matIconRegistry.addSvgIconLiteral("search-icon", domSanitizer.bypassSecurityTrustHtml(SEARCH_ICON))
-      matIconRegistry.addSvgIconLiteral("download-icon", domSanitizer.bypassSecurityTrustHtml(DOWNLOAD_ICON))
+    ngOnInit(): void {
+        this.subscription = this.dataService.currDrawerState.subscribe(state => this.drawerState = state);
+    }
 
-     }
-
-  ngOnInit(): void {
-  }
-  
-  handleDrawerClick(){
-    this.dataService.changeDrawerState(!this.drawerState)
-  }
+    handleDrawerClick() {
+        this.dataService.changeDrawerState(!this.drawerState);
+    }
 }

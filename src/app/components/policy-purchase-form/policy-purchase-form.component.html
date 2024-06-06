@@ -1,0 +1,109 @@
+<!-- <mat-card class="purchase-form-cnt">
+    <mat-card-title>Let's move ahead with your personal details</mat-card-title>
+    <form [formGroup]="personalDetailsForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div class="form-group">
+          <label>What does your annual income look like?</label>
+          <div class="income-options">
+            <mat-radio-group formControlName="annualIncome">
+              <mat-radio-button value="5-10L">5Lacs-10Lacs</mat-radio-button>
+              <mat-radio-button value=">10L">>10Lacs</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DD/MM/YYYY">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <div>Your age is: {{ age }}</div>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Your First Name</mat-label>
+            <input matInput formControlName="firstName">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Your Last Name</mat-label>
+            <input matInput formControlName="lastName">
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <label>Your Gender</label>
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="third-gender">Third Gender</mat-radio-button>
+          </mat-radio-group>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Your Mobile Number</mat-label>
+            <input matInput formControlName="mobileNumber">
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline">
+            <mat-label>Your Email ID</mat-label>
+            <input matInput formControlName="emailId">
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Agent</mat-label>
+            <mat-select formControlName="agent">
+              <mat-option *ngFor="let agent of agents" [value]="agent">{{ agent }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+  
+        <div class="form-group">
+          <mat-checkbox formControlName="acceptPolicy">I accept SBI Life's Privacy policy</mat-checkbox>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Continue</button>
+        <button mat-button type="button">Disclaimer</button>
+      </mat-card-actions>
+    </form>
+  </mat-card> -->
+<div class="purchase-form-cnt">
+    <h1 class="form-heading">Let's move ahead with your personal details</h1>
+    <form class="purchase-form" [formGroup]="personalDetailsForm">
+        <div class="annual-income">
+            <label>What does your annual income look like?</label>
+              <mat-radio-group formControlName="annualIncome" class="income-options">
+                <mat-radio-button value="5-10L">5Lacs-10Lacs</mat-radio-button>
+                <mat-radio-button value=">10L">>10Lacs</mat-radio-button>
+              </mat-radio-group>
+        </div>
+        <div class="dateOfBirth-age">
+            <mat-form-field appearance="outline">
+              <mat-label>Date of Birth</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="DD/MM/YYYY">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div>Your age is: {{ age }}</div>
+        </div>
+        <div class="names">
+            <mat-form-field appearance="outline">
+              <mat-label>Your First Name</mat-label>
+              <input matInput formControlName="firstName">
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+              <mat-label>Your Last Name</mat-label>
+              <input matInput formControlName="lastName">
+            </mat-form-field>
+          </div>
+    
+    </form>
+</div>

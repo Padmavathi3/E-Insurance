@@ -1,0 +1,65 @@
+.purchase-form-cnt{
+    margin-top: 10px;
+    margin-left: 25%;
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.purchase-form{
+    border: 1px solid black;
+    width: calc(100% - 100px);
+    height:auto;
+    padding: 30px 50px;
+    display: flex;
+    flex-direction: column;
+    gap:40px;
+}
+.annual-income{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    
+}
+.income-options{
+    display: flex;
+    gap:15px;
+}
+.dateOfBirth-age{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.names{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+// .mat-card {
+//     margin: 20px;
+//   }
+  
+//   .form-group {
+//     margin-bottom: 20px;
+//   }
+  
+//   .income-options {
+//     display: flex;
+//     gap: 10px;
+//   }
+  
+//   mat-form-field {
+//     width: 100%;
+//   }
+  
+//   mat-radio-group {
+//     display: flex;
+//     gap: 10px;
+//   }
+  
+//   mat-card-actions {
+//     display: flex;
+//     justify-content: space-between;
+//   }

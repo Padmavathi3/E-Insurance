@@ -1,10 +1,10 @@
 <img src="assets/Images/login-background-image.png" class="background-image" alt="">
 
-<div *ngIf="!loginFormVisible" class="buttons-cnt" (click)="showLoginForm()">
-    <button mat-flat-button color="primary" (click)="userRole='admin'">Admin</button>
-    <button mat-flat-button color="primary" (click)="userRole='employee'">Employee</button>
-    <button mat-flat-button color="primary" (click)="userRole='agent'">Agent</button>
-    <button mat-flat-button color="primary"(click)="userRole='customer'">Customer</button>
+<div *ngIf="!loginFormVisible" class="buttons-cnt">
+    <button mat-flat-button color="primary" (click)="userRole='admin'" (click)="showLoginForm()">Admin</button>
+    <button mat-flat-button color="primary" (click)="userRole='employee'" (click)="showLoginForm()">Employee</button>
+    <button mat-flat-button color="primary" (click)="userRole='agent'" (click)="showLoginForm()">Agent</button>
+    <button mat-flat-button color="primary"(click)="userRole='customer'" (click)="handleCustomer()">Customer</button>
 </div>
 
 <div class="login-main-cnt" *ngIf="loginFormVisible">
