@@ -1,39 +1,41 @@
 <div class="policy-main-cnt">
-    <div class="card" *ngFor="let item of items">
-        <div class="card-header">
-        <img src="assets/image/life-insurance.avif" alt="Icon" class="icon">
+    <div class="card" *ngFor="let item of policiesList">
+      <div class="card-header">
+        <!-- <img src="assets/image/life-insurance.avif" alt="Icon" class="icon"> -->
         <div class="header-content">
-            <h2>Life - eWealth Insurance</h2>
-            <p>111L100V03</p>
+          <h2>{{item.policyName}}</h2>
+          <p>PolicyType: {{item.policyType}}</p>
         </div>
-    </div>
-    <div class="card-body">
+      </div>
+      <div class="card-body">
         <p>
-            You can now enjoy the benefits of ULIPs with a simplified, 3-step online buying process.SBI Life - eWealth Insurance, helps you grow your wealth. Avail twin benefits of market linked returns on your invested money and the security of life cover.
+          {{item.description}}
         </p>
         <div class="plan-details">
-            <span>Life - eWealth Unit-linked insurance plan | Online | Protection | Automatic Asset Allocation</span>
+          <span>{{item.policyName}} insurance plan | Online | Protection | Automatic Asset Allocation</span>
         </div>
-    </div>
-    <div class="card-footer" *ngIf="cartDetails">
+      </div>
+      <div class="card-footer" *ngIf="item.cartDetails">
         <div class="key-features">
-            <h3>Key Features</h3>
-            <p>Annual Premium Range</p>
-            <h4>Rs. 24,000 onwards</h4>
-            <p>Entry Age</p>
-            <h4>5 years</h4>
+          <h3>Key Features</h3>
+          <p><b>Annual Premium Range</b></p>
+          <h4>{{item.premium}} onwards</h4>
+          <p><b>Entry Age</b></p>
+          <h4>{{item.entryAge}}</h4>
+          <p><b>Term Length (Time Period)</b></p>
+          <h4>{{item.termLength}}</h4>
         </div>
         <div class="key-benefits">
-            <h3>Key Benefits</h3>
-            <ul>
-                <li>Easy online buying process</li>
-                <li>Two plan options</li>
-            </ul>
+          <h3>Key Benefits</h3>
+          <ul>
+            <li>Easy online buying process</li>
+          </ul>
         </div>
+      </div>
+      <div class="card-actions">
+        <button class="buy-now" [routerLink]="['/dashboard', userRole, 'purchaseForm']" *ngIf="userRole=='customer'">Buy Now</button>
+        <button class="learn-more" (click)="learnMore(item)">Learn More</button>
+      </div>
     </div>
-    <div class="card-actions">
-        <button class="buy-now" [routerLink]="['/dashboard', userRole,'purchaseForm']">Buy Now</button>
-        <button class="learn-more" (click)="learnMore()">Learn More</button>
-    </div>
-</div>
-</div>
+  </div>
+  

@@ -1,0 +1,80 @@
+<div class="main-content" style="background: url('assets/Images/customer-policy-form.png') no-repeat center center; background-size: cover;">
+    <div class="personal-dtl-cnt">
+      <div class="header-detail">
+        <span><h1><b>Enter Policy Details</b></h1></span>
+      </div>
+      <div class="policyDetail">
+        <mat-card>
+          <form [formGroup]="policyForm" (ngSubmit)="addPolicy()">
+            <mat-card-content>
+              <!-- Policy Details -->
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Policy Name</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Policy Name</mat-label>
+                    <input matInput formControlName="policyName">
+                  </mat-form-field>
+                </div>
+                <div class="form-field">
+                  <label>Description</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <input matInput formControlName="description">
+                  </mat-form-field>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Policy Type</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Policy Type</mat-label>
+                    <input matInput formControlName="policyType">
+                  </mat-form-field>
+                </div>
+                <div class="form-field">
+                  <label>Term Length</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Term Length</mat-label>
+                    <input matInput formControlName="termLength" type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Coverage Amount</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Coverage Amount</mat-label>
+                    <input matInput formControlName="coverageAmount" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="form-field">
+                  <label>Premium</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Premium</mat-label>
+                    <input matInput formControlName="premium" type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Entry Age</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Entry Age</mat-label>
+                    <input matInput formControlName="entryAge" type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit">Add Policy</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

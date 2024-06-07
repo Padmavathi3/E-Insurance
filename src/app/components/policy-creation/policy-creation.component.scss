@@ -1,0 +1,36 @@
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .personal-dtl-cnt {
+    background: rgba(244, 253, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+  }
+  
+  .header-detail {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    width: 43%;
+  }
+  
+  .mat-card-actions {
+    display: flex;
+    justify-content: center;
+  }
+  

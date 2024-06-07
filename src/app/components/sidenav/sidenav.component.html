@@ -8,7 +8,8 @@
       <span>Receipt</span>
     </div>
     <div class="sidenav-content" *ngIf="userRole === 'employee'">
-      <span>Policy Creation</span>
+      <span [routerLink]="['/dashboard', userRole, 'addPolicy']">Policy Creation</span>
+      <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
       <span>Payment Process</span>
       <span>Commission Calculation</span>
       <span>Premium Calculation</span>
@@ -19,7 +20,8 @@
     </div>
 
     <div class="sidenav-content" *ngIf="userRole === 'agent'">
-      <span>Policy Creation</span>
+      <span [routerLink]="['/dashboard', userRole, 'addPolicy']">Policy Creation</span>
+      <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
       <span>Payment Process</span>
       <span>Commission Calculation</span>
       <span>Premium Calculation(for all policies)</span>

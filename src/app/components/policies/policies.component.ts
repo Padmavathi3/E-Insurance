@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice/dataservice.service';
+import { PolicyService } from 'src/app/services/policy-service/policy.service';
 
 @Component({
   selector: 'app-policies',
@@ -8,25 +9,25 @@ import { DataserviceService } from 'src/app/services/dataservice/dataservice.ser
   styleUrls: ['./policies.component.scss']
 })
 export class PoliciesComponent implements OnInit {
-  userRole:string='';
-  items=Array(5)// Initialize items array with your data
-  cartDetails: boolean = false; // Define cartDetails property if needed
+  userRole: string = '';
+  policiesList: any[] = [];
 
-  constructor(private dataService:DataserviceService) { }
+  constructor(private dataService: DataserviceService, private policyService: PolicyService) { }
 
   ngOnInit(): void {
     this.dataService.userRoleState.subscribe((res: any) => {
       this.userRole = res.userRole;
       console.log('UserRole:', res);
     });
+
+    this.policyService.getAllPoliciesCall().subscribe(res => {
+      this.policiesList = res.data.map((policy: any) => ({ ...policy, cartDetails: false })); // Initialize cartDetails for each policy
+      console.log("get all books", res.data);
+      this.policyService.getAllPolicies(res);
+    });
   }
 
-  // buyNow() {
-  //   this.router.navigate(['/customerDashboard', this.userRole, 'policies','policyForm']);
-
-  //}
-
-  learnMore() {
-this.cartDetails=true  
-}
+  learnMore(policy: any) {
+    policy.cartDetails = !policy.cartDetails;  // Toggle cartDetails for the specific policy
+  }
 }
