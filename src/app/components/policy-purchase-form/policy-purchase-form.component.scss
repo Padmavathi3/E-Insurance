@@ -1,65 +1,135 @@
-.purchase-form-cnt{
-    margin-top: 10px;
-    margin-left: 25%;
-    width:50%;
+// .purchase-form-cnt{
+//     margin-top: 10px;
+//     margin-left: 25%;
+//     width:50%;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+// }
+// .purchase-form{
+//     border: 1px solid black;
+//     width: calc(100% - 100px);
+//     height:auto;
+//     padding: 30px 50px;
+//     display: flex;
+//     flex-direction: column;
+//     gap:40px;
+// }
+// .annual-income{
+//     display: flex;
+//     flex-direction: column;
+//     gap:10px;
+    
+// }
+// .income-options{
+//     display: flex;
+//     gap:15px;
+// }
+// .dateOfBirth-age{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+// }
+// .names{
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+
+// }
+
+.main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.purchase-form{
-    border: 1px solid black;
-    width: calc(100% - 100px);
-    height:auto;
-    padding: 30px 50px;
+    // height: calc(100vh - 60px); /* Adjust the height if needed */
+    background-size: cover;
+    background-position: center;
+    position: relative; /* To position the quote absolutely within this container */
+  }
+  
+.personal-dtl-cnt {
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    gap:40px;
-}
-.annual-income{
+    align-items: center;
+  }
+.header-detail {
+    margin: 30px 0px;
+    font-size: 24px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .header-detail span {
+    font-size: 40px;
+  }
+  
+  .personalDetail {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10%;
+  }
+  
+  .address {
     display: flex;
     flex-direction: column;
-    gap:10px;
-    
-}
-.income-options{
+    margin-bottom: 10px;
+  }
+  
+  .textarea {
+    height: 50px;
+    width: 300px;
+  }
+  
+  .form-group-single {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    color: rgb(128, 128, 197);
+  }
+  
+  .form-field {
+    flex: 1;
+  }
+  
+  .income-options {
     display: flex;
-    gap:15px;
-}
-.dateOfBirth-age{
+    gap: 10px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  mat-radio-button {
+    width: 173px;
+  }
+  
+  mat-radio-group {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.names{
+    gap: 10px;
+  }
+  
+  mat-card {
+    padding: 20px;
+  }
+  
+  mat-card-actions {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-}
-// .mat-card {
-//     margin: 20px;
-//   }
+    justify-content: flex-end;
+  }
   
-//   .form-group {
-//     margin-bottom: 20px;
-//   }
-  
-//   .income-options {
-//     display: flex;
-//     gap: 10px;
-//   }
-  
-//   mat-form-field {
-//     width: 100%;
-//   }
-  
-//   mat-radio-group {
-//     display: flex;
-//     gap: 10px;
-//   }
-  
-//   mat-card-actions {
-//     display: flex;
-//     justify-content: space-between;
-//   }

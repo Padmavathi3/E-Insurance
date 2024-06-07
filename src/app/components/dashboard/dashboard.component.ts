@@ -17,5 +17,5 @@ export class DashboardComponent implements OnInit {
     this.dataService.changeUserRole(res1)
     });
   }
-
+  
 }

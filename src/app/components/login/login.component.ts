@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice/dataservice.service';
+import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   userRole:string=''
 
-  constructor(private formBuilder: FormBuilder,private route:Router,private dataservice:DataserviceService) { }
+  constructor(private formBuilder: FormBuilder,private route:Router,private dataservice:DataserviceService,private userService:UserService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -36,36 +37,28 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.loginControl);
-    if(this.loginForm.invalid) return
-    const {email, password} = this.loginForm.value
-    this.route.navigate([`/dashboard/`,this.userRole])    //go to user role dashboard
+    if (this.loginForm.invalid) return;
 
-    // if(this.userRole=='customer')
-    //   {
-    //     this.route.navigate([`/customerDashboard/`,this.userRole])    //go to user role dashboard
-    //   }
-    // else if(this.userRole=='employee')
-    //   {
-    //     this.route.navigate([`/employeeDashboard/`,this.userRole])    //go to employee role dashboard
-    //   }
-    // else if(this.userRole=='agent')
-    //   {
-    //     this.route.navigate([`/agentDashboard/`,this.userRole])    //go to agnet role dashboard
-    //   }
-    //  else if(this.userRole=='admin')
-    //    {
-    //       this.route.navigate([`/adminDashboard/`,this.userRole])    //go to admin role dashboard
-    //    }
+    const { email, password } = this.loginForm.value;
 
-    console.log('user role',this.userRole);
-    this.dataservice.changeUserRole(this.userRole);
-
+    this.userService.loginCall(email, password, this.userRole).subscribe(
+      response => {
+        console.log('Login successful', response);
+        // Save token and navigate to user role dashboard
+        localStorage.setItem('AuthToken', response.token);
+        this.dataservice.changeUserRole(this.userRole);
+        this.route.navigate([`/dashboard/`, this.userRole]);
+      },
+      error => {
+        console.error('Login failed', error);
+        // Handle login failure (e.g., show error message)
+      }
+    );
   }
   handleRegister()
   {
     this.dataservice.changeUserRole(this.userRole);
-    this.route.navigate(['signup'])
+    this.route.navigate(['/signup',this.userRole])
   }
  
 }
