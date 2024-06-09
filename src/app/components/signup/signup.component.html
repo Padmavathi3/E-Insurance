@@ -43,6 +43,14 @@
           </mat-form-field>
         </div>
       </div>
+      <div class="location-field" *ngIf="userRole === 'agent'">
+        <label>Location</label>
+        <mat-form-field appearance="outline">
+          <mat-label>Location Form Field</mat-label>
+          <input matInput placeholder="Enter Location" formControlName="location">
+          <mat-error *ngIf="signupControl['location']?.hasError('required')">Location required</mat-error>
+        </mat-form-field>
+      </div>
       <div class="signup-form-buttons">
         <span routerLink="/">Already Have An Account</span>
         <button type="button" mat-raised-button color="primary" class="login-btn" (click)="handleSignup()">SignUp</button>

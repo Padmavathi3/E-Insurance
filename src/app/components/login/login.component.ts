@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice/dataservice.service';
 import { UserService } from 'src/app/services/user-service/user.service';
+import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -13,14 +14,34 @@ export class LoginComponent implements OnInit {
 
   loginFormVisible = false;
   loginForm!: FormGroup;
-  userRole:string=''
+  userRole: string = '';
 
-  constructor(private formBuilder: FormBuilder,private route:Router,private dataservice:DataserviceService,private userService:UserService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private dataservice: DataserviceService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['redirect'] === 'buyNow') {
+        const role = params['userRole'];
+        if (role) {
+          this.userRole = role;
+          if (this.isCustomerLoggedIn()) {
+            this.router.navigate(['/dashboard/customer']);
+          } else {
+            this.showLoginForm();
+          }
+        }
+      }
     });
   }
 
@@ -31,9 +52,23 @@ export class LoginComponent implements OnInit {
   showLoginForm(): void {
     this.loginFormVisible = true;
   }
-  handleCustomer()
-  {
-    this.route.navigate([`/dashboard/`,this.userRole])    //go to customer role dashboard
+
+  handleCustomer() {
+    this.router.navigate(['/dashboard/customer']);
+  }
+
+  isCustomerLoggedIn(): boolean {
+    const token = localStorage.getItem('AuthToken');
+    if (token) {
+      try {
+        const decodedToken: any = jwtDecode(token);
+        return decodedToken.role === 'customer';
+      } catch (error) {
+        console.error("Error decoding token:", error);
+        return false;
+      }
+    }
+    return false;
   }
 
   login(): void {
@@ -44,21 +79,23 @@ export class LoginComponent implements OnInit {
     this.userService.loginCall(email, password, this.userRole).subscribe(
       response => {
         console.log('Login successful', response);
-        // Save token and navigate to user role dashboard
-        localStorage.setItem('AuthToken', response.token);
+        if (response && response.data) {
+          localStorage.setItem('AuthToken', response.data);
+          console.log('Token stored:', response.data);
+        } else {
+          console.error('Token is missing in the response');
+        }
         this.dataservice.changeUserRole(this.userRole);
-        this.route.navigate([`/dashboard/`, this.userRole]);
+        this.router.navigate([`/dashboard/`, this.userRole]);
       },
       error => {
         console.error('Login failed', error);
-        // Handle login failure (e.g., show error message)
       }
     );
   }
-  handleRegister()
-  {
+
+  handleRegister() {
     this.dataservice.changeUserRole(this.userRole);
-    this.route.navigate(['/signup',this.userRole])
+    this.router.navigate(['/signup', this.userRole]);
   }
- 
 }
