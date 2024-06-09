@@ -1,4 +1,5 @@
 export interface PolicyObj {
+  policyId?:number,
   policyName?:string,
   description: string;
   policyType?: string;

@@ -26,8 +26,4 @@ export class SidenavComponent implements OnInit {
     });
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
 }

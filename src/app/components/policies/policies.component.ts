@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice/dataservice.service';
 import { PolicyService } from 'src/app/services/policy-service/policy.service';
+import {jwtDecode} from 'jwt-decode';
 
 @Component({
   selector: 'app-policies',
@@ -11,8 +12,9 @@ import { PolicyService } from 'src/app/services/policy-service/policy.service';
 export class PoliciesComponent implements OnInit {
   userRole: string = '';
   policiesList: any[] = [];
+  selectedPolicyId: number | null = null; // Add this line
 
-  constructor(private dataService: DataserviceService, private policyService: PolicyService) { }
+  constructor(private dataService: DataserviceService, private policyService: PolicyService, private router: Router) { }
 
   ngOnInit(): void {
     this.dataService.userRoleState.subscribe((res: any) => {
@@ -22,9 +24,46 @@ export class PoliciesComponent implements OnInit {
 
     this.policyService.getAllPoliciesCall().subscribe(res => {
       this.policiesList = res.data.map((policy: any) => ({ ...policy, cartDetails: false })); // Initialize cartDetails for each policy
-      console.log("get all books", res.data);
+      console.log("get all policies", res.data);
       this.policyService.getAllPolicies(res);
     });
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwtDecode(token);
+    } catch (Error) {
+      return null;
+    }
+  }
+
+  buyNow(policyId: number) { // Add policyId parameter
+    console.log("buy now method is calling");
+
+    const authToken = localStorage.getItem('AuthToken');
+    if (authToken) {
+      console.log("Token is present:", authToken);
+
+      try {
+        const decodedToken: any = this.getDecodedAccessToken(authToken);
+        const role = decodedToken.role;
+        console.log("Decoded Token Role:", role);
+
+        if (role === 'customer') {
+          this.selectedPolicyId = policyId; // Store the selected policy ID
+          this.router.navigate(['/dashboard/customer', 'purchaseForm'], { queryParams: { policyId: policyId } }); // Pass policyId as query param
+        } else {
+          console.log("User is not a customer. Redirecting to login page.");
+          this.router.navigate(['/'], { queryParams: { redirect: 'buyNow', userRole: 'customer' } });
+        }
+      } 
+      catch (error) {
+        console.error("Error decoding token:", error);
+      }
+    } else {
+      console.log("Token is not present. Redirecting to login page.");
+      this.router.navigate(['/'], { queryParams: { redirect: 'buyNow', userRole: 'customer' } });
+    }
   }
 
   learnMore(policy: any) {

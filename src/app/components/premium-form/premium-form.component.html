@@ -1,0 +1,80 @@
+<div class="main-content" style="background: url('assets/Images/customer-policy-form.png') no-repeat center center; background-size: cover;">
+    <div class="personal-dtl-cnt" *ngIf="!isFormSubmitted; else successMessage">
+      <div class="header-detail">
+        <span><h1><b>Calculate Premium Amount</b></h1></span>
+      </div>
+      <div class="policyDetail">
+        <mat-card>
+          <form [formGroup]="policyForm"  (ngSubmit)="onSubmit()">
+            <mat-card-content>
+              <!-- Coverage Amount and Policy Term -->
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Sum Assured (Coverage Amount)</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Coverage Amount</mat-label>
+                    <input matInput formControlName="coverageAmount" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="form-field">
+                  <label>Policy Term</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Policy Term</mat-label>
+                    <input matInput formControlName="policyTerm" type="number">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="form-field">
+                  <label>Customer Age</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Customer Age</mat-label>
+                    <input matInput formControlName="age" type="number">
+                  </mat-form-field>
+                </div>
+                <div class="form-field">
+                  <label>Policy Type</label>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Policy Type</mat-label>
+                    <input matInput formControlName="policyType" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+  
+              <!-- Payment Options Dropdown -->
+              <div class="form-group-single">
+                <label>Premium Payment Frequency</label>
+                <mat-form-field appearance="outline">
+                  <mat-label>Select Frequency</mat-label>
+                  <mat-select formControlName="paymentFrequency" (selectionChange)="selectPaymentOption($event.value)">
+                    <mat-option value="Half-Yearly">Half-Yearly</mat-option>
+                    <mat-option value="Yearly">Yearly</mat-option>
+                    <mat-option value="Monthly">Monthly</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <!-- Calculate Premium -->
+              <div class="calculate-premium">
+                <button mat-raised-button color="accent" type="button" (click)="calculatePremium()">Calculate Premium</button>
+                <div *ngIf="premiumResult">
+                  <h3>Premium: {{ premiumResult }}</h3>
+                </div>
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-raised-button color="primary" type="submit">Finish</button>
+            </mat-card-actions>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+     <!-- Success Message -->
+  <ng-template #successMessage>
+    <div class="success-message">
+      <h2>Congratulations! Policy purchased successfully.</h2>
+    </div>
+  </ng-template>
+  </div>
+  

@@ -15,6 +15,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +29,7 @@ import { PolicyPurchaseFormComponent } from './components/policy-purchase-form/p
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { PolicyCreationComponent } from './components/policy-creation/policy-creation.component';
+import { PremiumFormComponent } from './components/premium-form/premium-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,8 @@ import { PolicyCreationComponent } from './components/policy-creation/policy-cre
     PolicyPurchaseFormComponent,
     DashboardComponent,
     SidenavComponent,
-    PolicyCreationComponent
+    PolicyCreationComponent,
+    PremiumFormComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,8 @@ import { PolicyCreationComponent } from './components/policy-creation/policy-cre
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

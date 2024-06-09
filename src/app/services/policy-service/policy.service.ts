@@ -31,4 +31,8 @@ export class PolicyService {
   {
     return this.http.getAllPoliciesApi();
   }
+  policyPurchaseCall(body:object)
+  {
+    return this.http.policyPurchaseApi(body);
+  }
 }

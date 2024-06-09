@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="card-actions">
-        <button class="buy-now" [routerLink]="['/dashboard', userRole, 'purchaseForm']" *ngIf="userRole=='customer'">Buy Now</button>
+        <button class="buy-now" *ngIf="userRole=='customer'" (click)="buyNow(item.policyId)">Buy Now</button>
         <button class="learn-more" (click)="learnMore(item)">Learn More</button>
       </div>
     </div>

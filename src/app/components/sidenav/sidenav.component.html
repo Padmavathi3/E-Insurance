@@ -29,9 +29,9 @@
       <span>View Commission</span>
     </div>
     <div class="sidenav-content" *ngIf="userRole === 'admin'">
-      <span>Register Agent</span>
-      <span>Register Employee</span>
-      <span>Register Customer</span>
+      <span routerLink="/signup/agent">Register Agent</span>
+      <span routerLink="/signup/employee">Register Employee</span>
+      <span routerLink="/signup/customer">Register Customer</span>
     </div>
   </mat-drawer>
   <mat-drawer-content>

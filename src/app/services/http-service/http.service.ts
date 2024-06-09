@@ -20,13 +20,13 @@ export class HttpService {
     return this.http.post(`${this.baseUrl}/UserManagement/AdminRegistration`,body)
   }
   agentRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/AgentRegistration`,body)
+    return this.http.post(`${this.baseUrl}/UserManagement/AgentRegistration`,body,{ headers: this.authHeader })
   }
   employeeRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/EmployeeRegistration`,body)
+    return this.http.post(`${this.baseUrl}/UserManagement/EmployeeRegistration`,body,{headers:this.authHeader})
   }
   customerRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/CustomerRegistration`,body)
+    return this.http.post(`${this.baseUrl}/UserManagement/CustomerRegistration`,body,{headers:this.authHeader})
   }
   loginApi(email: string, password: string, role: string): Observable<any> {
     const url = `${this.baseUrl}/UserManagement/Login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&role=${encodeURIComponent(role)}`;
@@ -41,5 +41,8 @@ export class HttpService {
   {
     return this.http.get(`${this.baseUrl}/PolicyCreation`)
   }
-
+  //-------------------------------------------------------------
+  policyPurchaseApi(body:object):Observable<any>{
+    return this.http.post(`${this.baseUrl}/PolicyPurchase/purchase`,body)
+  }
 }
