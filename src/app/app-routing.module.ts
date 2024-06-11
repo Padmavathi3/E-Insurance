@@ -8,6 +8,7 @@ import { PolicyPurchaseFormComponent } from './components/policy-purchase-form/p
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PolicyCreationComponent } from './components/policy-creation/policy-creation.component';
 import { PremiumFormComponent } from './components/premium-form/premium-form.component';
+import { CustomerPoliciesComponent } from './components/customer-policies/customer-policies.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path: 'policies', component: PoliciesComponent },
     { path: 'purchaseForm', component: PolicyPurchaseFormComponent },
     { path: 'addPolicy', component: PolicyCreationComponent },
-    { path: 'premium', component: PremiumFormComponent }
+    { path: 'premium', component: PremiumFormComponent },
+    {path:'customerPolicies',component:CustomerPoliciesComponent}
   ]}
 ];
 

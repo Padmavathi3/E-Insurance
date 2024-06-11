@@ -64,40 +64,40 @@ export class PolicyPurchaseFormComponent implements OnInit {
   addCustomerDetails(): void {
     if (this.personalDetailsForm.valid) {
       const formValue = this.personalDetailsForm.value;
-      this.router.navigate(['/dashboard', this.userRole, 'premium']);
+      // this.router.navigate(['/dashboard', this.userRole, 'premium']);
 
-      // // Parse annualIncome as a number
-      // const annualIncomeNumber = parseFloat(formValue.annualIncome);
+      // Parse annualIncome as a number
+      const annualIncomeNumber = parseFloat(formValue.annualIncome);
 
-      // // Check if annualIncomeNumber is a valid number
-      // if (!isNaN(annualIncomeNumber)) {
-      //   const body = {
-      //     customerId: this.customerId, // Add customerId from token
-      //     policyId: this.policyId, // Add policyId from the query params
-      //     purchaseDate: new Date().toISOString(),
-      //     agentId: formValue.agent.id,
-      //     annualIncome: annualIncomeNumber,
-      //     dateOfBirth: formValue.dob,
-      //     firstName: formValue.firstName,
-      //     lastName: formValue.lastName,
-      //     gender: formValue.gender,
-      //     mobileNumber: formValue.mobileNumber,
-      //     address: formValue.address
-      //   };
+      // Check if annualIncomeNumber is a valid number
+      if (!isNaN(annualIncomeNumber)) {
+        const body = {
+          customerId: this.customerId, // Add customerId from token
+          policyId: this.policyId, // Add policyId from the query params
+          purchaseDate: new Date().toISOString(),
+          agentId: formValue.agent.id,
+          annualIncome: annualIncomeNumber,
+          dateOfBirth: formValue.dob,
+          firstName: formValue.firstName,
+          lastName: formValue.lastName,
+          gender: formValue.gender,
+          mobileNumber: formValue.mobileNumber,
+          address: formValue.address
+        };
 
-      //   this.policyService.policyPurchaseCall(body).subscribe(response => {
-      //     console.log('Policy purchased successfully', response);
-      //     // Handle success response
-      //     this.router.navigate(['/dashboard', this.userRole, 'premium']);
-      //   }, 
-      //   error => {
-      //     console.error('Error purchasing policy', error);
-      //     // Handle error response
-      //   });
-      // } else {
-      //   // Handle the case where the annualIncome is not a valid number
-      //   console.error('Invalid annualIncome value:', formValue.annualIncome);
-      // }
+        this.policyService.customerDetailsCall(body).subscribe(response => {
+          console.log('Policy purchased successfully', response);
+          // Handle success response
+          this.router.navigate(['/dashboard', this.userRole, 'premium'],{ queryParams: { policyId: this.policyId }});
+        }, 
+        error => {
+          console.error('Error purchasing policy', error);
+          // Handle error response
+        });
+      } else {
+        // Handle the case where the annualIncome is not a valid number
+        console.error('Invalid annualIncome value:', formValue.annualIncome);
+      }
     }
   }
 }

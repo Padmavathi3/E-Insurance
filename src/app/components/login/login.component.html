@@ -8,12 +8,6 @@
 </div>
 
 <div class="login-main-cnt" *ngIf="loginFormVisible">
-  <div class="buttons">
-    <button mat-flat-button color="primary" (click)="userRole='admin'">Admin</button>
-    <button mat-flat-button color="primary" (click)="userRole='employee'">Employee</button>
-    <button mat-flat-button color="primary" (click)="userRole='agent'">Agent</button>
-    <button mat-flat-button color="primary" (click)="userRole='customer'">Customer</button>
-  </div>
   <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
     <span class="heading"><h2>LogIn</h2></span>
     <div class="email-field">

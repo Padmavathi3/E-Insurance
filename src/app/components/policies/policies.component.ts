@@ -54,7 +54,7 @@ export class PoliciesComponent implements OnInit {
           this.router.navigate(['/dashboard/customer', 'purchaseForm'], { queryParams: { policyId: policyId } }); // Pass policyId as query param
         } else {
           console.log("User is not a customer. Redirecting to login page.");
-          this.router.navigate(['/'], { queryParams: { redirect: 'buyNow', userRole: 'customer' } });
+          this.router.navigate(['/'], { queryParams: {userRole: 'customer' } });
         }
       } 
       catch (error) {
@@ -62,7 +62,7 @@ export class PoliciesComponent implements OnInit {
       }
     } else {
       console.log("Token is not present. Redirecting to login page.");
-      this.router.navigate(['/'], { queryParams: { redirect: 'buyNow', userRole: 'customer' } });
+      this.router.navigate(['/'], { queryParams: { userRole: 'customer' } });
     }
   }
 

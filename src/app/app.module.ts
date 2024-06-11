@@ -30,6 +30,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { PolicyCreationComponent } from './components/policy-creation/policy-creation.component';
 import { PremiumFormComponent } from './components/premium-form/premium-form.component';
+import { CustomerPoliciesComponent } from './components/customer-policies/customer-policies.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { PremiumFormComponent } from './components/premium-form/premium-form.com
     DashboardComponent,
     SidenavComponent,
     PolicyCreationComponent,
-    PremiumFormComponent
+    PremiumFormComponent,
+    CustomerPoliciesComponent
   ],
   imports: [
     BrowserModule,
