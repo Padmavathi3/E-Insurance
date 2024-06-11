@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +43,19 @@ export class HttpService {
     return this.http.get(`${this.baseUrl}/PolicyCreation`)
   }
   //-------------------------------------------------------------
-  policyPurchaseApi(body:object):Observable<any>{
+  customerDetailsApi(body:object):Observable<any>{
     return this.http.post(`${this.baseUrl}/PolicyPurchase/purchase`,body)
+  }
+  premiumCalculationApi(body:object):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/PaymentProcess/calculate-premium`,body)
+  }
+  policyPurchaseApi():Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}/PaymentProcess/finalize`,{})
+  }
+  getCustomerPoliciesApi():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/PolicyPurchase`,{headers:this.authHeader})
   }
 }

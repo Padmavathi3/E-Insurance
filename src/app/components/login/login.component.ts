@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice/dataservice.service';
 import { UserService } from 'src/app/services/user-service/user.service';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -31,15 +31,13 @@ export class LoginComponent implements OnInit {
     });
 
     this.activatedRoute.queryParams.subscribe(params => {
-      if (params['redirect'] === 'buyNow') {
-        const role = params['userRole'];
-        if (role) {
-          this.userRole = role;
-          if (this.isCustomerLoggedIn()) {
-            this.router.navigate(['/dashboard/customer']);
-          } else {
-            this.showLoginForm();
-          }
+      const role = params['userRole'];
+      if (role) {
+        this.userRole = role;
+        if (this.isCustomerLoggedIn()) {
+          this.router.navigate(['/dashboard/customer']);
+        } else {
+          this.showLoginForm();
         }
       }
     });

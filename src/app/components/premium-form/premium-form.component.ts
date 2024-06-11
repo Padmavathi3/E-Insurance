@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { PolicyService } from 'src/app/services/policy-service/policy.service';
 
 @Component({
   selector: 'app-premium-form',
@@ -7,36 +9,79 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./premium-form.component.scss']
 })
 export class PremiumFormComponent implements OnInit {
+  policyId !: number;
   policyForm!: FormGroup;
   premiumResult: number | null = null;
   selectedPaymentOption: string = '';
   isFormSubmitted: boolean = false;
 
-constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private policyService: PolicyService,private activatedRoute: ActivatedRoute) {
     this.policyForm = this.fb.group({
       coverageAmount: [0, Validators.required],
       policyTerm: [0, Validators.required],
       paymentFrequency: ['', Validators.required],
-      age:['',Validators.required],
-      policyType:['',Validators.required]
+      age: ['', Validators.required],
+      policyType: ['', Validators.required]
     });
   }
 
   ngOnInit(): void {
-    
-  }
+    // Get policyId from query params
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.policyId = +params['policyId'];
+    });
+   }
 
-  calculatePremium():void
-  {
+   calculatePremium(): void {
+    if (!this.policyId) {
+      console.error('Policy ID is null. Unable to calculate premium.');
+      // Optionally, you can display an error message to the user or handle the situation
+      return;
+    }
+  
     if (this.policyForm.valid) {
       const formData = this.policyForm.value;
       console.log(formData);
-      const { coverageAmount, policyTerm, paymentFrequency } = this.policyForm.value;
-      // Premium calculation logic (example)
-      this.premiumResult = coverageAmount * policyTerm * (paymentFrequency === 'Yearly' ? 1 : paymentFrequency === 'Half-Yearly' ? 0.5 : 1 / 12);
+      const { coverageAmount, policyTerm, paymentFrequency, age, policyType } = this.policyForm.value;
+  
+      // Prepare the request body
+      const requestBody = {
+        policyId: this.policyId, // Ensure policyId is not null
+        customerAge: age,
+        coverageAmount: coverageAmount,
+        policyType: policyType,
+        paymentFrequency: paymentFrequency,
+        termYears: policyTerm
+      };
+  
+      // Call the premium calculation API
+      this.policyService.premiumCalculationCall(requestBody).subscribe(
+        response => {
+          this.premiumResult = response.premium;
+          console.log("premium amount", this.premiumResult);
+          
+        },
+        error => {
+          console.error('Error calculating premium:', error);
+        }
+      );
     }
   }
-
+  
+  
+  purchase(): void {
+    this.policyService.policyPurchaseCall().subscribe(
+      () => {
+        console.log("Policy purchased successfully");
+        // Optionally, you can perform any additional actions here after successful purchase
+      },
+      error => {
+        console.error('Error purchasing policy:', error);
+        // Optionally, you can handle the error and provide user feedback
+      }
+    );
+  }
+  
   selectPaymentOption(option: string): void {
     this.selectedPaymentOption = option;
     console.log('Selected Payment Option:', option);
@@ -48,5 +93,3 @@ constructor(private fb: FormBuilder) {
     }
   }
 }
-
-

@@ -31,8 +31,20 @@ export class PolicyService {
   {
     return this.http.getAllPoliciesApi();
   }
-  policyPurchaseCall(body:object)
+  customerDetailsCall(body:object)
   {
-    return this.http.policyPurchaseApi(body);
+    return this.http.customerDetailsApi(body);
   }
+  premiumCalculationCall(body:object)
+  {
+    return this.http.premiumCalculationApi(body);
+  }
+  policyPurchaseCall()
+  {
+    return this.http.policyPurchaseApi();
+  }
+  getCustomerPoliciesCall()
+{
+  return this.http.getCustomerPoliciesApi();
+}
 }

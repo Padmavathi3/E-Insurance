@@ -3,6 +3,7 @@
     <div class="sidenav-content" *ngIf="userRole === 'customer'">
       <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
       <span>View Payments</span>
+      <span routerLink="customerPolicies">My Policies</span>
       <span>Policy Cancellation</span>
       <span>Policy Renewal</span> <!-- send request to agent to policy renewal -->
       <span>Receipt</span>
