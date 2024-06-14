@@ -9,6 +9,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PolicyCreationComponent } from './components/policy-creation/policy-creation.component';
 import { PremiumFormComponent } from './components/premium-form/premium-form.component';
 import { CustomerPoliciesComponent } from './components/customer-policies/customer-policies.component';
+import { CustomerPaymentsComponent } from './components/customer-payments/customer-payments.component';
+import { ReceiptComponent } from './components/receipt/receipt.component';
+import { AllCustomerPoliciesComponent } from './components/all-customer-policies/all-customer-policies.component';
+import { AgentSoldPoliciesComponent } from './components/agent-sold-policies/agent-sold-policies.component';
+import { CommissionFormComponent } from './components/commission-form/commission-form.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,7 +24,12 @@ const routes: Routes = [
     { path: 'purchaseForm', component: PolicyPurchaseFormComponent },
     { path: 'addPolicy', component: PolicyCreationComponent },
     { path: 'premium', component: PremiumFormComponent },
-    {path:'customerPolicies',component:CustomerPoliciesComponent}
+    {path:'customerPolicies',component:CustomerPoliciesComponent},
+    {path:'customerPayments',component:CustomerPaymentsComponent},
+    { path: 'receipt', component: ReceiptComponent },  // Updated route with parameter
+    {path:'allCustomerPolicies',component:AllCustomerPoliciesComponent},
+    {path:'soldPolicies',component:AgentSoldPoliciesComponent},
+    {path:'commision',component:CommissionFormComponent}
   ]}
 ];
 

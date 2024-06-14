@@ -11,7 +11,7 @@ import { DataserviceService } from 'src/app/services/dataservice/dataservice.ser
 export class SidenavComponent implements OnInit {
   userRole:string=''
   drawerState: boolean = false;
-  subscription!: Subscription;
+  // subscription!: Subscription;
 
   constructor(private dataService: DataserviceService, private router: Router) { }
 

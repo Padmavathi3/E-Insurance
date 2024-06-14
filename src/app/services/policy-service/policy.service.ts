@@ -47,4 +47,24 @@ export class PolicyService {
 {
   return this.http.getCustomerPoliciesApi();
 }
+getAllCustomerPoliciesCall()
+{
+  return this.http.getAllCustomerPoliciesApi();
+}
+processPaymentCall(body:object)
+{
+  return this.http.processPaymentApi(body);
+}
+getPaymentsCall()
+{
+  return this.http.getPaymentsApi()
+}
+receiptCall(paymetId:number)
+{
+  return this.http.receiptApi(paymetId)
+}
+deletePolicyCall(customerPolicyId:number)
+{
+  return this.http.deletePolicyApi(customerPolicyId);
+}
 }

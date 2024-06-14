@@ -28,7 +28,6 @@ export class PolicyCreationComponent implements OnInit {
     if (this.policyForm.valid) {
       const formData = this.policyForm.value;
       console.log(formData);
-      // Send form data to backend API
       this.policyService.addPolicyCall(formData).subscribe((res)=>
       {
         console.log("policy added successfully",res);  

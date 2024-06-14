@@ -4,8 +4,10 @@
       <span class="home-nav" routerLink="/dashboard/customer">Home</span>
       <span class="policies-nav">/ My Policies</span>
     </div>
-    <div class="policies-cnt" *ngIf="policies.length > 0">
-      <div class="policies-heading-cnt">
+
+    <!-- Policies List -->
+    <div  class="policies-cnt">
+      <div class="policies-heading-cnt" *ngIf="!selectedPolicy">
         <span class="policies-heading">My Policies ({{policies.length}})</span>
       </div>
       <div class="policy-item-cnt" *ngFor="let policy of policies">
@@ -30,8 +32,29 @@
         </div>
       </div>
     </div>
-    <div *ngIf="policies.length === 0" class="empty-policies">
+
+    <!-- No Policies Message -->
+    <div *ngIf="policies.length === 0 && !selectedPolicy" class="empty-policies">
       <span class="content">You have no policies</span>
     </div>
+
+    <!-- Payment Container -->
+    <div *ngIf="selectedPolicy" class="payment-container">
+      <div class="payment-grid">
+        <!-- First Row: Headings -->
+        <span class="grid-header"><b>Policy Purchase ID</b></span>
+        <span class="grid-header"><b>Premium Amount</b></span>
+        <span class="grid-header"><b>Payment Date</b></span>
+        
+        <!-- Second Row: Data -->
+        <span>{{ selectedPolicy.customerPolicyId }}</span>
+        <span>Rs. {{ selectedPolicy.premiumAmount }}</span>
+        <span>{{ currentDate }}</span>
+    
+        <!-- Third Row: Pay Button -->
+        <button mat-raised-button color="primary" class="pay-button" (click)="processPayment()">Pay Amount</button>
+      </div>
+    </div>
+      
   </div>
 </div>

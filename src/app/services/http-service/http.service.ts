@@ -20,14 +20,18 @@ export class HttpService {
   adminRegistrationApi(body:object):Observable<any>{
     return this.http.post(`${this.baseUrl}/UserManagement/AdminRegistration`,body)
   }
-  agentRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/AgentRegistration`,body,{ headers: this.authHeader })
-  }
-  employeeRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/EmployeeRegistration`,body,{headers:this.authHeader})
-  }
-  customerRegistrationApi(body:object):Observable<any>{
-    return this.http.post(`${this.baseUrl}/UserManagement/CustomerRegistration`,body,{headers:this.authHeader})
+  // agentRegistrationApi(body:object):Observable<any>{
+  //   return this.http.post(`${this.baseUrl}/UserManagement/AgentRegistration`,body,{ headers: this.authHeader })
+  // }
+  // employeeRegistrationApi(body:object):Observable<any>{
+  //   return this.http.post(`${this.baseUrl}/UserManagement/EmployeeRegistration`,body,{headers:this.authHeader})
+  // }
+  // customerRegistrationApi(body:object):Observable<any>{
+  //   return this.http.post(`${this.baseUrl}/UserManagement/CustomerRegistration`,body,{headers:this.authHeader})
+  // }
+  RegistrationApi(body:object,endpoint:string)
+  {
+    return this.http.post(this.baseUrl+endpoint,body)
   }
   loginApi(email: string, password: string, role: string): Observable<any> {
     const url = `${this.baseUrl}/UserManagement/Login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}&role=${encodeURIComponent(role)}`;
@@ -58,4 +62,25 @@ export class HttpService {
   {
     return this.http.get(`${this.baseUrl}/PolicyPurchase`,{headers:this.authHeader})
   }
+  getAllCustomerPoliciesApi():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/PolicyPurchase/allpurchases`)
+  }
+  deletePolicyApi(customerPolicyId:number):Observable<any>
+  {
+    return this.http.delete(`${this.baseUrl}/policypurchase/${customerPolicyId}`)
+  }
+  //----------------------payment------------------------------------------------
+  processPaymentApi(body: object): Observable<any> {
+    return this.http.post(`${this.baseUrl}/paymentprocess/payment`, body)
+  }
+  getPaymentsApi():Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/paymentprocess/getbycustomerid`,{headers:this.authHeader})
+  }
+  receiptApi(paymentId:number):Observable<any>
+  {
+    return this.http.get(`${this.baseUrl}/policypurchase/generatereceipt/${paymentId}`)
+  }
+
 }

@@ -1,32 +1,22 @@
 <mat-drawer-container class="sidenav-main-cnt">
   <mat-drawer #drawer mode="side" [opened]="drawerState" class="sidenav-options-cnt">
     <div class="sidenav-content" *ngIf="userRole === 'customer'">
-      <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
-      <span>View Payments</span>
+      <span routerLink="policies">View Policies</span>
+      <span routerLink="customerPayments">View Payments</span>
       <span routerLink="customerPolicies">My Policies</span>
-      <span>Policy Cancellation</span>
-      <span>Policy Renewal</span> <!-- send request to agent to policy renewal -->
-      <span>Receipt</span>
+      <span routerLink="receipt">Receipt</span>
     </div>
     <div class="sidenav-content" *ngIf="userRole === 'employee'">
       <span [routerLink]="['/dashboard', userRole, 'addPolicy']">Policy Creation</span>
       <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
-      <span>Payment Process</span>
-      <span>Commission Calculation</span>
-      <span>Premium Calculation</span>
-      <span>View Payments</span>
-      <span>View Commission</span>
-      <span>Policy Cancellation</span>
-      <span>Policy Renewal</span>
+      <span routerLink="allCustomerPolicies">View All Customer Policies</span>
     </div>
 
     <div class="sidenav-content" *ngIf="userRole === 'agent'">
       <span [routerLink]="['/dashboard', userRole, 'addPolicy']">Policy Creation</span>
       <span [routerLink]="['/dashboard', userRole, 'policies']">View Policies</span>
-      <span>Payment Process</span>
-      <span>Commission Calculation</span>
-      <span>Premium Calculation(for all policies)</span>
-      <span>Premium Calculation(for single policies)</span>
+      <span routerLink="soldPolicies">View Sold Policies</span>
+      <span routerLink="commision">Commission Calculation</span>
       <span>View Commission</span>
     </div>
     <div class="sidenav-content" *ngIf="userRole === 'admin'">
