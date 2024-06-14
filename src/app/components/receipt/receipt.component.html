@@ -1,0 +1,21 @@
+<div class="receipt-main-cnt" #template>
+    <div class="heading">
+        <h2><b>Payment Receipt</b></h2>
+    </div>
+    <div class="payment-details">
+        <span>Payment ID: {{ paymentDetails.paymentId }}</span>
+        <span>Name: {{ paymentDetails.customerName }}</span>
+        <span>Email: {{ paymentDetails.customerEmail }}</span>
+        <span>Agent Name: {{ paymentDetails.agentName }}</span>
+        <span>Policy Name: {{ paymentDetails.policyName }}</span>
+        <span>Coverage Amount: {{ paymentDetails.coverageAmount }}</span>
+        <span>Payment Date: {{ paymentDetails.paymentDate }}</span>
+        <span>Amount: {{ paymentDetails.amount }}</span>
+        <span>Status: {{ paymentDetails.status }}</span>
+    </div>
+    <div class="download-button">
+        <button mat-raised-button color="primary" type="button" (click)="downloadAsPdf()" [disabled]="downloadBtn">
+          Download
+        </button>
+    </div>
+</div>

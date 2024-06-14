@@ -12,13 +12,13 @@ export class UserService {
     return this.http.adminRegistrationApi(body)
   }
   agentRegistrationCall(body:object){
-    return this.http.agentRegistrationApi(body)
+    return this.http.RegistrationApi(body,`/UserManagement/AgentRegistration`)
   }
   employeeRegistrationCall(body:object){
-    return this.http.employeeRegistrationApi(body)
+    return this.http.RegistrationApi(body,`/UserManagement/EmployeeRegistration`)
   }
   customerRegistrationCall(body:object){
-    return this.http.customerRegistrationApi(body)
+    return this.http.RegistrationApi(body,`/UserManagement/CustomerRegistration`)
   }
   loginCall(email: string, password: string, role: string) {
     return this.http.loginApi(email, password, role);

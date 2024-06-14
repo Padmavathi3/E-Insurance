@@ -1,0 +1,25 @@
+/* Style for the receipt container */
+.receipt-main-cnt {
+    border: 7px solid rgb(248, 78, 103);
+    width: 30%;
+    height: 290px;
+    margin: 200px 470px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+}
+.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.payment-details{
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+}
+.download-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

@@ -35,7 +35,6 @@ export class PremiumFormComponent implements OnInit {
    calculatePremium(): void {
     if (!this.policyId) {
       console.error('Policy ID is null. Unable to calculate premium.');
-      // Optionally, you can display an error message to the user or handle the situation
       return;
     }
   
@@ -73,11 +72,9 @@ export class PremiumFormComponent implements OnInit {
     this.policyService.policyPurchaseCall().subscribe(
       () => {
         console.log("Policy purchased successfully");
-        // Optionally, you can perform any additional actions here after successful purchase
       },
       error => {
         console.error('Error purchasing policy:', error);
-        // Optionally, you can handle the error and provide user feedback
       }
     );
   }

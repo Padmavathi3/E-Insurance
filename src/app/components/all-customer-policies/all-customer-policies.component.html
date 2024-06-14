@@ -1,0 +1,38 @@
+<div class="main-content" style="background: url('assets/Images/customer-policy-form.png') no-repeat center center; background-size: cover;">
+    <div class="policies-main-cnt">
+        <div class="title-nav">
+            <span class="home-nav" routerLink="/dashboard/customer">Home</span>
+            <span class="policies-nav">/ Customers Policies </span>
+        </div>
+        <div class="policies-cnt">
+            <div class="policies-heading-cnt">
+                <span class="policies-heading">Customers Policies ({{policies.length}})</span>
+            </div>
+            <div class="policy-item-cnt" *ngFor="let policy of policies">
+                <div class="policy-box">
+                    <div class="policy-details">
+                        <span>Customer Id: {{policy.customerId}}</span>
+                        <span>Coverage Amount: {{ policy.coverageAmount }}</span>
+                        <span>Policy Term: {{ policy.policyTerm }}</span>
+                        <span>Policy Type: {{ policy.policyType }}</span>
+                        <span>Payment Frequency: {{ policy.paymentFrequency }}</span>
+                        <span>Customer Age: {{ policy.customerAge }}</span>
+                        <span>(Agent Name, Location): {{ policy.agentName }}, {{ policy.agentLocation }}</span>
+                        <span class="policy-name">Policy Name: {{ policy.policyName }}</span>
+                        <span class="premium-amount">Premium Amount: Rs. {{ policy.premiumAmount }}</span>
+                        <span class="policy-id">Policy Purchase ID: {{ policy.customerPolicyId }}</span>
+                        <span><b>Policy Purchased On </b>{{ formatDate(policy.calculationCreatedAt) }}</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button mat-raised-button color="warn" (click)="cancelPolicy(policy)">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="policies.length === 0" class="empty-policies">
+            <span class="content">No one customer doesn't buy any policy</span>
+        </div>
+    </div>
+</div> 
+

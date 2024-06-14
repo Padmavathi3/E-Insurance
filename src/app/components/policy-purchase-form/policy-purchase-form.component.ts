@@ -18,8 +18,8 @@ export class PolicyPurchaseFormComponent implements OnInit {
     { id: 3, name: 'Agent2', location: 'Hyderabad' }
   ];
   age!: number;
-  policyId!: number; // Add this line
-  customerId!: number; // Add this line
+  policyId!: number; 
+  customerId!: number; 
 
   constructor(private fb: FormBuilder, private router: Router, private policyService: PolicyService, private activatedRoute: ActivatedRoute) { }
 

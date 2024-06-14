@@ -31,6 +31,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { PolicyCreationComponent } from './components/policy-creation/policy-creation.component';
 import { PremiumFormComponent } from './components/premium-form/premium-form.component';
 import { CustomerPoliciesComponent } from './components/customer-policies/customer-policies.component';
+import { CustomerPaymentsComponent } from './components/customer-payments/customer-payments.component';
+import { ReceiptComponent } from './components/receipt/receipt.component';
+import { AgentSoldPoliciesComponent } from './components/agent-sold-policies/agent-sold-policies.component';
+import { CommissionFormComponent } from './components/commission-form/commission-form.component';
+import { AllCustomerPoliciesComponent } from './components/all-customer-policies/all-customer-policies.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +50,12 @@ import { CustomerPoliciesComponent } from './components/customer-policies/custom
     SidenavComponent,
     PolicyCreationComponent,
     PremiumFormComponent,
-    CustomerPoliciesComponent
+    CustomerPoliciesComponent,
+    CustomerPaymentsComponent,
+    ReceiptComponent,
+    AgentSoldPoliciesComponent,
+    CommissionFormComponent,
+    AllCustomerPoliciesComponent
   ],
   imports: [
     BrowserModule,

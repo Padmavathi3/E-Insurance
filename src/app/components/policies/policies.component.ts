@@ -12,8 +12,7 @@ import {jwtDecode} from 'jwt-decode';
 export class PoliciesComponent implements OnInit {
   userRole: string = '';
   policiesList: any[] = [];
-  selectedPolicyId: number | null = null; // Add this line
-
+  selectedPolicyId: number | null = null; 
   constructor(private dataService: DataserviceService, private policyService: PolicyService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +22,7 @@ export class PoliciesComponent implements OnInit {
     });
 
     this.policyService.getAllPoliciesCall().subscribe(res => {
-      this.policiesList = res.data.map((policy: any) => ({ ...policy, cartDetails: false })); // Initialize cartDetails for each policy
+      this.policiesList = res.data.map((policy: any) => ({ ...policy, cartDetails: false })); 
       console.log("get all policies", res.data);
       this.policyService.getAllPolicies(res);
     });
@@ -37,7 +36,7 @@ export class PoliciesComponent implements OnInit {
     }
   }
 
-  buyNow(policyId: number) { // Add policyId parameter
+  buyNow(policyId: number) { 
     console.log("buy now method is calling");
 
     const authToken = localStorage.getItem('AuthToken');

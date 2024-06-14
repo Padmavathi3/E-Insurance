@@ -1,0 +1,31 @@
+<div class="main-content" style="background: url('assets/Images/customer-policy-form.png') no-repeat center center; background-size: cover;">
+    <div class="payments-main-cnt">
+      <div class="title-nav">
+        <span class="home-nav" routerLink="/dashboard/customer">Home</span>
+        <span class="payments-nav">/ My Payments</span>
+      </div>
+      <div class="payments-cnt" *ngIf="payments.length > 0">
+        <div class="payments-heading-cnt">
+          <span class="payments-heading">My Payments ({{payments.length}})</span>
+        </div>
+        <div class="payment-item-cnt" *ngFor="let payment of payments">
+          <div class="payment-box">
+            <div class="payment-details">
+              <span>paymentId:  {{payment.paymentId}}</span>
+              <span>Policy Purchase ID: {{payment.id}}</span>
+              <span>Status: {{payment.status}}</span>
+              <span>Payment Date: {{payment.paymentDate}}</span>
+              <span>Premium Amount: Rs. {{payment.premium}}</span>
+            </div>
+            <div class="receipt">
+              <button mat-raised-button color="primary" [routerLink]="['/dashboard/customer/receipt']" [queryParams]="{ paymentId: payment.paymentId }">Generate Receipt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="payments.length === 0" class="empty-payments">
+        <span class="content">You have no payments</span>
+      </div>
+    </div>
+  </div>
+  

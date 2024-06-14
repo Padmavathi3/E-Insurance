@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      location: ['']
+      location: ['',Validators.required]
     });
 
     this.route.params.subscribe((res1: any) => {
@@ -38,7 +38,7 @@ export class SignupComponent implements OnInit {
     this.dataservice.userRoleState.subscribe((res: any) => {
       this.userRole = res.userRole;
       console.log('UserRole:', res);
-      this.updateLocationValidator();
+      // this.updateLocationValidator();
     });
   }
 
@@ -46,14 +46,14 @@ export class SignupComponent implements OnInit {
     return this.signupForm.controls;
   }
 
-  updateLocationValidator() {
-    if (this.userRole === 'agent') {
-      this.signupForm.get('location')?.setValidators([Validators.required]);
-    } else {
-      this.signupForm.get('location')?.clearValidators();
-    }
-    this.signupForm.get('location')?.updateValueAndValidity();
-  }
+  // updateLocationValidator() {
+  //   if (this.userRole === 'agent') {
+  //     this.signupForm.get('location')?.setValidators([Validators.required]);
+  //   } else {
+  //     this.signupForm.get('location')?.clearValidators();
+  //   }
+  //   this.signupForm.get('location')?.updateValueAndValidity();
+  // }
 
   handleSignup() {
     if (this.signupForm.invalid) {
@@ -77,11 +77,11 @@ export class SignupComponent implements OnInit {
       this.userService.adminRegistrationCall(adminBody).subscribe({
         next: (res) => {
           console.log('Registration successful', res);
-          this.router.navigate(['/dashboard', this.userRole]); // Replace with your desired path
+          this.router.navigate(['/dashboard', this.userRole]); 
         },
         error: (err) => {
           console.error('Registration error', err);
-          alert(`Registration failed: ${err.message}`); // Display a user-friendly error message
+          alert(`Registration failed: ${err.message}`); 
         }
       });
     } else if (this.userRole === 'agent') {
@@ -98,11 +98,11 @@ export class SignupComponent implements OnInit {
       this.userService.agentRegistrationCall(agentBody).subscribe({
         next: (res) => {
           console.log('Registration successful', res);
-          this.router.navigate(['/dashboard', this.userRole]); // Replace with your desired path
+          this.router.navigate(['/dashboard', this.userRole]); 
         },
         error: (err) => {
           console.error('Registration error', err);
-          alert(`Registration failed: ${err.message}`); // Display a user-friendly error message
+          alert(`Registration failed: ${err.message}`); 
         }
       });
     } else if (this.userRole === 'employee') {
@@ -118,11 +118,11 @@ export class SignupComponent implements OnInit {
       this.userService.employeeRegistrationCall(employeeBody).subscribe({
         next: (res) => {
           console.log('Registration successful', res);
-          this.router.navigate(['/dashboard', this.userRole]); // Replace with your desired path
+          this.router.navigate(['/dashboard', this.userRole]); 
         },
         error: (err) => {
           console.error('Registration error', err);
-          alert(`Registration failed: ${err.message}`); // Display a user-friendly error message
+          alert(`Registration failed: ${err.message}`); 
         }
       });
     } else if (this.userRole === 'customer') {
@@ -138,11 +138,11 @@ export class SignupComponent implements OnInit {
       this.userService.customerRegistrationCall(customerBody).subscribe({
         next: (res) => {
           console.log('Registration successful', res);
-          this.router.navigate(['/dashboard', this.userRole]); // Replace with your desired path
+          this.router.navigate(['/dashboard', this.userRole]); 
         },
         error: (err) => {
           console.error('Registration error', err);
-          alert(`Registration failed: ${err.message}`); // Display a user-friendly error message
+          alert(`Registration failed: ${err.message}`); 
         }
       });
     } else {
